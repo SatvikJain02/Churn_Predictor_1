@@ -1,5 +1,32 @@
 import streamlit as st
 import requests
+import subprocess
+import sys
+import time
+import os
+
+# ---------------- FASTAPI BOOTSTRAP ---------------- #
+# This magic code starts your backend server automatically! 😈
+if "fastapi_process" not in st.session_state:
+    # Check if the server is already running to avoid duplicates
+    try:
+        requests.get("http://127.0.0.1:8000")
+        st.session_state["fastapi_process"] = True
+    except:
+        # If not, start it in the background
+        subprocess.Popen(
+            [sys.executable, "-m", "uvicorn", "main:app", "--host", "127.0.0.1", "--port", "8000"],
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL
+        )
+        st.session_state["fastapi_process"] = True
+        time.sleep(5)  # Give it 5 seconds to wake up
+
+# ---------------- CONFIGURATION ---------------- #
+BASE_URL = "http://127.0.0.1:8000"  # Now this will actually exist!
+# ... (rest of your code continues below)
+
+# ==================================================================================================================
 
 # ---------------- CONFIGURATION ---------------- #
 BASE_URL = "http://127.0.0.1:8000"  # Ensure your FastAPI is running here
