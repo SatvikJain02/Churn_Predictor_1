@@ -6,6 +6,6 @@ joblib
 pyjwt
 streamlit>=1.40.0
 requests
-scikit-learn==1.6.1
+scikit-learn==1.5.2
 altair
 imbalanced-learn
