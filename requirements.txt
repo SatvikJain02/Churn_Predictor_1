@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+pydantic
+pandas
+joblib
+pyjwt
+streamlit
+requests
+scikit-learn==1.5.2
