@@ -1,31 +1,8 @@
 import streamlit as st
 import requests
-import subprocess
-import sys
-import time
-import os
-
-# ---------------- FASTAPI BOOTSTRAP ---------------- #
-# 🚀 This checks if the API is running. If not, it starts it!
-if "fastapi_process" not in st.session_state:
-    try:
-        # Check if the API is already alive
-        requests.get("http://127.0.0.1:8000")
-        st.session_state["fastapi_process"] = True
-    except:
-        # If dead, start it in the background
-        # We point it to 'main:app' because your file is named main.py
-        subprocess.Popen(
-            [sys.executable, "-m", "uvicorn", "main:app", "--host", "127.0.0.1", "--port", "8000"],
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL
-        )
-        st.session_state["fastapi_process"] = True
-        # Wait 5 seconds for the brain to boot up
-        time.sleep(5)
 
 # ---------------- CONFIGURATION ---------------- #
-BASE_URL = "http://127.0.0.1:8000"
+BASE_URL = "http://127.0.0.1:8000"  # Ensure your FastAPI is running here
 
 st.set_page_config(
     page_title="Churn Predictor 😈",
