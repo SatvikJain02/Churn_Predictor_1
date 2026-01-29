@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 
 # ---------------- CONFIGURATION ---------------- #
-BASE_URL = "http://127.0.0.1:8000"  # Ensure your FastAPI is running here
+BASE_URL = "https://churn-predictor-1-1.onrender.com"  # Ensure your FastAPI is running here
 
 st.set_page_config(
     page_title="Churn Predictor 😈",
